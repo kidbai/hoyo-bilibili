@@ -1,0 +1,12 @@
+{
+    "big" : [
+        { "src" :  "../images/test.jpg", "title": "火影啦"}
+    ],
+    "small": [
+        { "src" :  "../images/test.jpg", "title": "火影啦啦啦"},
+        { "src" :  "../images/test.jpg", "title": "火影啦啦啦"},
+        { "src" :  "../images/test.jpg", "title": "火影啦啦啦"},
+        { "src" :  "../images/test.jpg", "title": "火影啦啦啦"}
+    ],
+    "hello" : "hello"
+}
