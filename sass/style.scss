@@ -782,6 +782,46 @@ a:hover {
                 }
             }
         }
+        .msg-list {
+            position: relative;
+            width: 100%;
+            li {
+                padding: 10px 0;
+                line-height: 22px;
+                font-size: 16px;
+                word-wrap: break-word;
+                word-break: break-all;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        .up-list {
+            position: relative;
+            width: 100%;
+            li {
+                width: 33.33333333%;
+                float: left;
+                margin-bottom: 10px;
+                .up-avatar {
+                    margin: 0 auto;
+                    width: 90px;
+                    height: 90px;
+                    overflow: hidden;
+                    border: 2px solid #eee;
+                    @include border-radius(50%);
+                    img {
+                        width: 90px;
+                    }
+                }
+                .up-name {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: #222;
+                    padding: 5px 0;
+                }
+            }
+        }
     }
     .user-r {
         width: 410px;
@@ -791,6 +831,46 @@ a:hover {
             border: 1px solid #eee;
             @include border-radius(4px);
             padding: 20px;
+            overflow: hidden;
+            .info {
+                .avatar {
+                    float: left;
+                    width: 80px;
+                    height: 80px;
+                    overflow: hidden;
+                    border: 2px solid #eee;
+                    @include border-radius(50%);
+                    img {
+                        width: 80px;
+                    }
+                }
+                .details {
+                    overflow: hidden;
+                    height: 80px;
+                    padding-left: 20px;
+                    .item {
+                        width: 100%;
+                        height: 40px;
+                        .icon {
+                            width: 30px;
+                            height: 28px;
+                            background-image: url('../images/icons2.png');
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                        .icon.name {
+                            background-position: -209px -145px;
+                        }
+                        .icon.reg {
+                            background-position: -209px -83px;
+                        }
+                        & > span {
+                            font-size: 15px;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
         }
     }
 }

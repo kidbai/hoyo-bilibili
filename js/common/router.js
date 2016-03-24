@@ -23,9 +23,19 @@
             console.error('path or template is undefined');
         }
 
+        var url;
+        // console.log(location.hash);
+
+        //过滤掉:id
+        var pos = location.hash.indexOf(":");
+        if(pos != -1) {
+            url = location.hash.slice(1, 8) + "id";
+        }else {
+            url = location.hash.slice(1) || 'home/';
+        }
 
         // load 加载
-        var url = location.hash.slice(1) || 'home/';
+
         // console.log(url);
         if(config.path instanceof Array){
             for (var i in config.path) {
@@ -40,7 +50,13 @@
         // hash变化时的处理
         window.addEventListener('hashchange', function () {
             console.log(location.hash);
-            url = location.hash.slice(1) || 'home/';
+            //过滤掉:id
+            var pos = location.hash.indexOf(":");
+            if(pos != -1) {
+                url = location.hash.slice(1, 8) + "id";
+            }else {
+                url = location.hash.slice(1) || 'home/';
+            }
             if(config.path instanceof Array){
                 for (var i in config.path) {
                     if(config.path[i] === url){
@@ -95,7 +111,7 @@ Router.route({
 });
 
 Router.route({
-    path: ["personal-center/", "personal-center/msg/", "personal-center/my-video/"]}, function () {
+    path: ["personal-center/", "personal-center/msg/", "personal-center/my-video/", "personal-center/follow/", "personal-center/collection/"]}, function () {
         var data = {};
         var html = new EJS({url: '../views/template/personal-center.ejs'}).render(data);
         $("#area > div").remove();
@@ -130,6 +146,18 @@ Router.route({
                 $("#user-status > div").remove();
                 $("#user-status").html(html);
                 break;
+            case "personal-center/follow/":
+                var data = {};
+                var html = new EJS({url: '../views/template/follow.ejs'}).render(data);
+                $("#user-status > div").remove();
+                $("#user-status").html(html);
+                break;
+            case "personal-center/collection/":
+                var data = {};
+                var html = new EJS({url: '../views/template/collection.ejs'}).render(data);
+                $("#user-status > div").remove();
+                $("#user-status").html(html);
+                break;
             default:
 
         }
@@ -137,6 +165,34 @@ Router.route({
         $(".user-nav > a").on('click', function(event) {
         });
 });
+
+Router.route({
+    path: "video/:id",}, function () {
+        var data = {};
+        var html = new EJS({url: '../views/template/video.ejs'}).render(data);
+        $("#area > div").remove();
+        $("#area").html(html);
+
+        // 加载视频
+        $("#danmup").DanmuPlayer({
+            src:"../src/level5.mp4",
+            height: "480px", //区域的高度
+            width: "800px" //区域的宽度
+            ,urlToGetDanmu:"../src/query.php"
+            ,urlToPostDanmu:"../src/stone.php"
+        });
+
+        $("#danmup .danmu-div").danmu("addDanmu",[
+            { "text":"这是滚动弹幕" ,color:"white",size:1,position:0,time:2}
+            ,{ "text":"我是帽子绿" ,color:"green",size:1,position:0,time:3}
+            ,{ "text":"哈哈哈啊哈" ,color:"black",size:1,position:0,time:10}
+            ,{ "text":"这是顶部弹幕" ,color:"yellow" ,size:1,position:1,time:3}
+            ,{ "text":"这是底部弹幕" , color:"red" ,size:1,position:2,time:9}
+            ,{ "text":"大家好，我是伊藤橙" ,color:"orange",size:1,position:1,time:3}
+
+        ])
+});
+
 
 // window.onhashchange = function () {
 //     console.log(url);
