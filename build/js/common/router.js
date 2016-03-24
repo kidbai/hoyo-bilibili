@@ -173,6 +173,20 @@ Router.route({
         $("#area > div").remove();
         $("#area").html(html);
 
+        // 收藏功能
+        $(".b-icon-show").on('click', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            if($(this).hasClass('active')){
+                // 取消收藏
+                $(this).removeClass('active');
+            }else {
+                // 收藏
+                $(this).addClass('active');
+            }
+
+        });
+
         // 加载视频
         $("#danmup").DanmuPlayer({
             src:"../src/level5.mp4",
