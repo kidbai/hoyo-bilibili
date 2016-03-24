@@ -1,6 +1,14 @@
 @import "compass/css3";
 @import "compass/reset";
 
+a {
+    text-decoration: none;
+    color: #222;
+}
+a:hover {
+    text-decoration: none;
+}
+
 .navbar-wrapper {
     position: relative;
     width: 100%;
@@ -21,7 +29,8 @@
             height: 100%;
             .menu {
                 height: 100%;
-                li {
+                & > li {
+                    position: relative;
                     background-color: rgba(255,255,255,0.88);
                     @include border-radius(8px);
                     transition: .2s background-color;
@@ -50,10 +59,63 @@
                         margin-top: 16px;
                     }
                 }
-                li.r {
+                & > li.r {
                     float: right;
+                    .user-avatar {
+                        display: inline-block;
+                        width: 35px;
+                        height: 35px;
+                        padding: 0;
+                        margin: 4px 4px 0 4px;
+                        @include border-radius(50%);
+                        overflow: hidden;
+                        & > img {
+                             width: 100%;
+                        }
+                    }
+                    .user-avatar:hover {
+                        .user-list {
+                            opacity: 1;
+                            top: 0;
+                            margin-top: 0px;
+                        }
+                    }
+                    .user-list {
+                        opacity: 0;
+                        width: 130px;
+                        position: absolute;
+                        // margin-top: 0px;
+                        margin-top: -165px;
+                        top: 0;
+                        left: 43px;
+                        color: #222;
+                        line-height: 25px;
+                        @include transition(.2s all);
+                        background-color: #f6f9fa;
+                        border: 1px solid #e5e9ef;
+                        @include border-radius(4px);
+                        & > li {
+                            text-align: center;
+                            background-color: #fff;
+                            & > a {
+                                padding: 5px 0;
+                                display: block;
+                                color: #222;
+                                width: 100%;
+                                height: 100%;
+                                text-align: center;
+                                text-decoration: none;
+                            }
+                        }
+                        & > li:hover {
+                            & > a {
+                                background-color: #00a1d6;
+                                color: #fff;
+                            }
+                        }
+                    }
                 }
-                li.l {
+                & > li.l {
                     float: left;
                 }
             }
@@ -593,6 +655,142 @@
                     float: left;
                 }
             }
+        }
+    }
+}
+
+.user-nav {
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #eee;
+    @include border-radius(4px);
+    padding: 0 8px;
+    & > a {
+        display: inline-block;
+        background-image: url(../images/icons2.png);
+        font-size: 14px;
+        line-height: 56px;
+        padding: 0 16px 0 40px;
+        margin-right: 25px;
+        text-decoration: none;
+        color: #222;
+        @include transition(.8s all);
+    }
+    & > a.active {
+        color: #00a1d6;
+        font-size: 17px;
+    }
+    & > a:hover {
+        color: #00a1d6;
+        font-size: 17px;
+    }
+    & > a.video {
+        background-position: -10px -322px;
+    }
+    & > a.msg {
+        background-position: -10px -387px;
+    }
+    & > a.follow {
+        background-position: -10px -516px;
+    }
+    & > a.collection {
+        background-position: -10px -451px;
+    }
+}
+.user-body {
+    position: relative;
+    margin-top: 15px;
+    .user-l {
+        background-color: #fff;
+        border: 1px solid #eee;
+        @include border-radius(4px);
+        float: left;
+        padding: 20px;
+        width: 730px;
+        .section-v {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 21px;
+            position: relative;
+            .section-title {
+                color: #000;
+                font-size: 20px;
+                font-weight: normal;
+                line-height: 33px;
+                padding: 0 0 21px;
+                position: relative;
+                & > .icon {
+                    background-image: url('../images/icons2.png');
+                    display: inline-block;
+                    background-position: -15px -16px;
+                    width: 33px;
+                    height: 33px;
+                    vertical-align: middle;
+                    margin-right: 10px
+                }
+                & > .upload {
+                    border: 1px solid #b8c0cc;
+                    border-radius: 4px;
+                    color: #6d757a;
+                    display: inline-block;
+                    float: right;
+                    font-size: 12px;
+                    line-height: 22px;
+                    transition: border .2s ease;
+                    vertical-align: middle;
+                    padding: 0 10px;
+                    position: absolute;
+                    top: 6px;
+                    right: 60px;
+                    overflow: hidden;
+                    & > input {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        opacity: 0;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .section-v-list {
+            position: relative;
+            .v-list {
+                position: relative;
+                li {
+                    float: left;
+                    width: 50%;
+                    & > a {
+                        display: block;
+                        margin: 0 auto;
+                        width: 240px;
+                        height: 180px;
+                        overflow: hidden;
+                        @include border-radius(5px);
+                        & > img {
+                            width: 100%;
+                            @include border-radius(5px);
+                        }
+                        .v-title {
+                            padding-top: 5px;
+                            text-decoration: none;
+                            color: #222;
+                            font-size: 14px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .user-r {
+        width: 410px;
+        margin-left: 750px;
+        .section-user {
+            background-color: #fff;
+            border: 1px solid #eee;
+            @include border-radius(4px);
+            padding: 20px;
         }
     }
 }

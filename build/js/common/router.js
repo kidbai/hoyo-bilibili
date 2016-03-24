@@ -17,7 +17,7 @@
         // console.log(typeof(config.path));
         // console.log(config.path.length);
         // console.log(config.path);
-        console.log(config.path instanceof Array);
+        // console.log(config.path instanceof Array);
 
         if(config.path === null || config.template === null){
             console.error('path or template is undefined');
@@ -29,28 +29,28 @@
         // console.log(url);
         if(config.path instanceof Array){
             for (var i in config.path) {
-                console.log(config.path[i]);
                 if(config.path[i] === url){
                     callback && callback();
+                    console.log('callback')
                 }
             }
         }else if ( url == config.path ) {
-            console.log('callback');
             callback&&callback();
         }
         // hash变化时的处理
         window.addEventListener('hashchange', function () {
+            console.log(location.hash);
             url = location.hash.slice(1) || 'home/';
             if(config.path instanceof Array){
                 for (var i in config.path) {
-                    console.log(config.path[i]);
                     if(config.path[i] === url){
                         callback && callback();
+                        console.log('callback')
                     }
                 }
             }else if ( url == config.path ) {
-                console.log('callback');
                 callback&&callback();
+                console.log('callback')
             }
         }, false);
 
@@ -62,20 +62,20 @@
 
 Router.route({
     path: ["home/", "anime/", "music/", "game/", "ent/", "tech/", "movies/", "other/"]}, function () {
-    // this.Router.template();
-    var data = {};
-    var html = new EJS({url: '../views/template/index.ejs'}).render(data);
-    $("#area > div").remove();
-    $("#area").html(html);
-    $('.banner').unslider({
-        speed: 500,               //  The speed to animate each slide (in milliseconds)
-    	delay: 3000,              //  The delay between slide animations (in milliseconds)
-        autoplay: true,
-        arrows: {
-            prev: '<a class="unslider-arrow prev"><</a>',
-            next: '<a class="unslider-arrow next">></a>',
-        }
-    });
+        console.log(location.hash.slice(1));
+        var data = {};
+        var html = new EJS({url: '../views/template/index.ejs'}).render(data);
+        $("#area > div").remove();
+        $("#area").html(html);
+        $('.banner').unslider({
+            speed: 500,               //  The speed to animate each slide (in milliseconds)
+        	delay: 3000,              //  The delay between slide animations (in milliseconds)
+            autoplay: true,
+            arrows: {
+                prev: '<a class="unslider-arrow prev"><</a>',
+                next: '<a class="unslider-arrow next">></a>',
+            }
+        });
 });
 
 Router.route({
@@ -94,7 +94,49 @@ Router.route({
         $("#area").html(html);
 });
 
+Router.route({
+    path: ["personal-center/", "personal-center/msg/", "personal-center/my-video/"]}, function () {
+        var data = {};
+        var html = new EJS({url: '../views/template/personal-center.ejs'}).render(data);
+        $("#area > div").remove();
+        $("#area").html(html);
 
+
+        $.each($(".user-nav > a"), function(index, el) {
+            $el = $(el);
+            if($el.attr('href') === location.hash){
+                console.log($el);
+                $el.addClass('active');
+            }
+        });
+
+        //根据hash加载子界面
+        switch (location.hash.slice(1)) {
+            case "personal-center/":
+                var data = {};
+                var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
+                $("#user-status > div").remove();
+                $("#user-status").html(html);
+                break;
+            case "personal-center/my-video/":
+                var data = {};
+                var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
+                $("#user-status > div").remove();
+                $("#user-status").html(html);
+                break;
+            case "personal-center/msg/":
+                var data = {};
+                var html = new EJS({url: '../views/template/msg.ejs'}).render(data);
+                $("#user-status > div").remove();
+                $("#user-status").html(html);
+                break;
+            default:
+
+        }
+
+        $(".user-nav > a").on('click', function(event) {
+        });
+});
 
 // window.onhashchange = function () {
 //     console.log(url);
