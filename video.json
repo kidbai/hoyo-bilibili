@@ -1,0 +1,17 @@
+{
+    "play": "123",
+    "comment": "333",
+    "collection": "123",
+    "upName": "zhang san",
+    "upAvatar": "../images/avatar.jpg",
+    "follow": "true",
+    "videoSrc": "../src/level5.mp4",
+    "danmu": [
+        { "text":"这是滚动弹幕", "color" : "white", "size" : 1, "position" : "0", "time" : "2"},
+        { "text":"这是滚动弹幕222222", "color" : "green", "size" : 1, "position" : "0", "time" : "3"},
+        { "text":"这是滚动弹幕3333333", "color" : "black", "size" : 1, "position" : "1", "time" : "6"},
+        { "text":"这是滚动弹幕44444", "color" : "white", "size" : 1, "position" : "1", "time" : "8"},
+        { "text":"这是滚动弹幕5555555", "color" : "white", "size" : 1, "position" : "2", "time" : "10"},
+        { "text":"这是滚动弹幕6666666", "color" : "white", "size" : 1, "position" : "2", "time" : "20"}
+    ]
+}

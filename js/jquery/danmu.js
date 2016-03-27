@@ -156,6 +156,9 @@
         //发送弹幕
         this.sendDanmu = function (e) {
             var text = $(e.data.that.id + " .danmu-input").get(0).value;
+            console.log(e.data.that.id);
+            console.log($(e.data.that.id).attr('data_id'));
+            var v_id = $(e.data.that.id).attr('data_id');
             if (text.length == 0) {
                 return;
             }
@@ -168,7 +171,7 @@
             var position = $(e.data.that.id + " input[name=danmu_position]:checked").val();
             var size = $(e.data.that.id + " input[name=danmu_size]:checked").val();
             var time = $(e.data.that.id + " .danmu-div").data("nowTime") + 3;
-            var textObj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '","time":' + time + '}';
+            var textObj = '{ "v_id":"' + v_id + '", "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '","time":' + time + '}';
             if (e.data.that.options.urlToPostDanmu)
                 $.post(e.data.that.options.urlToPostDanmu, {
                     danmu: textObj

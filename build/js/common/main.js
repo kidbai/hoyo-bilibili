@@ -38,5 +38,11 @@ require.config({
     }
 });
 
-require(["jquery", "danmu", "router", "ejs", "jquery.unslider", "jquery.shCircleLoader", "sco.tooltip", "colpick", "jquery.danmu"], function($, DanmuPlayer){
+require(["jquery", "ejs"], function($){
+    $(function (){
+        var user_status = sessionStorage.getItem('user_status')
+        if(user_status === null || user_status === 'guest') {
+            
+        }
+    });
 });
