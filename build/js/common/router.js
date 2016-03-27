@@ -7,6 +7,7 @@
         console.error('not supports');
     }
 
+
     function Router() {}
     Router.prototype.route = function ( config , callback ) {
         var config = $.extend({
@@ -79,19 +80,46 @@
 Router.route({
     path: ["home/", "anime/", "music/", "game/", "ent/", "tech/", "movies/", "other/"]}, function () {
         console.log(location.hash.slice(1));
+        if(location.hash === ''){
+            location.hash = "#home/";
+        }
+        switch (location.hash.slice(1)) {
+            case "home/":
+                $.ajax({
+                    url: '../../home.json',
+                    type: 'GET',
+                    dataType: 'json',
+                })
+                .done(function(data) {
+                    console.log(data);
+                    console.log(data.total[0].content[0].id);
+                    console.log("success");
+                    var html = new EJS({url: '../views/template/index.ejs'}).render(data);
+                    $("#area > div").remove();
+                    $("#area").html(html);
+                    $('.banner').unslider({
+                        speed: 500,               //  The speed to animate each slide (in milliseconds)
+                    	delay: 3000,              //  The delay between slide animations (in milliseconds)
+                        autoplay: true,
+                        arrows: {
+                            prev: '<a class="unslider-arrow prev"><</a>',
+                            next: '<a class="unslider-arrow next">></a>',
+                        }
+                    });
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+
+                break;
+            default:
+
+        }
         var data = {};
-        var html = new EJS({url: '../views/template/index.ejs'}).render(data);
-        $("#area > div").remove();
-        $("#area").html(html);
-        $('.banner').unslider({
-            speed: 500,               //  The speed to animate each slide (in milliseconds)
-        	delay: 3000,              //  The delay between slide animations (in milliseconds)
-            autoplay: true,
-            arrows: {
-                prev: '<a class="unslider-arrow prev"><</a>',
-                next: '<a class="unslider-arrow next">></a>',
-            }
-        });
+
 });
 
 Router.route({

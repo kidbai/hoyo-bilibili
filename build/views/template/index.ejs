@@ -3,24 +3,14 @@
         <div class="topic-wrapper">
             <div class="banner">
                 <ul>
-                    <li>
-                        <a href="#video/123">
-                            <img src="../images/test.jpg" alt="">
-                            <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#video/124">
-                            <img src="../images/test.jpg" alt="">
-                            <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#video/125">
-                            <img src="../images/test.jpg" alt="">
-                            <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                        </a>
-                    </li>
+                    <% for(var i = 0; i < big.length; i ++) { %>
+                        <li>
+                            <a href="#video/:<%= big[i].id %>">
+                                <img src="<%= big[i].src %>" alt="">
+                                <p class="topic-title"><%= big[i].title %></p>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
             </div>
         </div>
@@ -28,291 +18,83 @@
     <div class="b-r">
         <div class="topic-list-wrapper">
             <ul class="topic-list">
-                <li class="item">
-                    <a href="#video/:1">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#video/:2">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#">
-                        <img src="../images/test.jpg" alt="">
-                        <p class="topic-title">哈哈哈哈哈哈哈哈</p>
-                    </a>
-                </li>
+                <% for(var i = 0; i < 8; i ++) { %>
+                    <li class="item">
+                        <a href="#video/:<%= small[i].id %>">
+                            <img src="<%= small[i].src %>" alt="">
+                            <p class="topic-title"><%= small[i].title %></p>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </div>
     </div>
 </div>
 <div class="container block">
-    <div class="block-l">
-        <ul>
-            <li class="head">动画</li>
-            <li class="info">
-                <a href="#">最新动态</a>
-            </li>
-            <li class="more">更多</li>
-        </ul>
-        <div class="block-body">
-            <ul class="v-list">
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="v">
-                        <div class="v-img">
-                            <img src="../images/test.jpg" alt="">
-                        </div>
-                        <p class="t">用来战斗啊沙发阿斯顿发收到风口浪尖看</p>
-                        <i>
-                            <span>
-                                <i class="play-icon"></i>
-                                124.4万
-                            </span>
-                            <span>
-                                <i class="cm-icon"></i>
-                                124.4万
-                            </span>
-                        </i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="block-r">
-        <ul>
-            <li class="head">排行</li>
-        </ul>
-        <div class="b-body">
+    <% for(var i = 0; i < total.length; i++) { %>
+        <div class="block-l">
             <ul>
-                <li>
-                    <i>1</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
+                <% if(total[i].header === "anime"){ %>
+                <li class="head">动画</li>
+                <% } else if(total[i].header === "music"){ %>
+                <li class="head">音乐</li>
+                <% } else if(total[i].header === "game"){ %>
+                <li class="head">游戏</li>
+                <% } else if(total[i].header === "ent"){ %>
+                <li class="head">娱乐</li>
+                <% } else if(total[i].header === "tech"){ %>
+                <li class="head">科技</li>
+                <% } else if(total[i].header === "movies"){ %>
+                <li class="head">影视</li>
+                <% } else if(total[i].header === "other"){ %>
+                    <li class="head">其他</li>
+                <% } %>
+                <li class="info">
+                    <a href="#">最新动态</a>
                 </li>
-                <li>
-                    <i>2</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
-                <li>
-                    <i>3</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
-                <li>
-                    <i>4</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
-                <li>
-                    <i>5</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
-                <li>
-                    <i>6</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
-                <li>
-                    <i>7</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
-                <li>
-                    <i>8</i>
-                    <a href="">【吐槽】啦啦啦啦啦啦啦啦</a>
-                </li>
+                <!-- <li class="more">更多</li> -->
             </ul>
+            <div class="block-body">
+                <ul class="v-list">
+                    <% for(var j = 0; j < 10; j++) { %>
+                        <li>
+                            <a href="#video/:<%= total[i].content[j].id %>" class="v">
+                                <div class="v-img">
+                                    <img src="<%= total[i].content[j].src %>" alt="">
+                                </div>
+                                <p class="t"><%= total[i].content[j].title %></p>
+                                <i>
+                                    <span>
+                                        <i class="play-icon"></i>
+                                        <%= total[i].content[j].play %>
+                                    </span>
+                                    <span>
+                                        <i class="cm-icon"></i>
+                                        <%= total[i].content[j].comment %>
+                                    </span>
+                                </i>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
-    </div>
+        <div class="block-r">
+            <ul>
+                <li class="head">排行</li>
+            </ul>
+            <div class="b-body">
+
+                <ul>
+                    <% for(var j = 0; j < 8; j++){ %>
+                    <li>
+                        <i><%= j+1 %></i>
+                        <a href="<%= total[i].rank[j].id %>"><%= total[i].rank[j].title %></a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    <% } %>
+
 </div>
