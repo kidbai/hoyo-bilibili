@@ -215,6 +215,12 @@ Router.route({
 
         });
 
+        //修改头像
+        $("body").on('change', '.avatar input[type="file"]', function(event) {
+            var formData = new FormData();
+            formData.append('avatar', $(this)[0].files[0]);
+        });
+
         //根据hash加载子界面
         switch (location.hash.slice(1)) {
             case "personal-center/":
