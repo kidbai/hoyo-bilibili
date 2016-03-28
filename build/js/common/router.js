@@ -77,6 +77,57 @@
     window.Router = new Router();
 })();
 
+function loadNav(navStatus) {
+    var url;
+    switch (navStatus) {
+        case "home/":
+                url = "../../home.json";break;
+        case "anime/":
+                url = "../../anime.json";break;
+        case "music/":
+                url = "../../music.json";break;
+        case "ent/":
+                url = "../../ent.json";break;
+        case "tech/":
+                url = "../../tech.json";break;
+        case "movies/":
+                url = "../../movies.json";break;
+        case "other/":
+                url = "../../other.json";break;
+                        break;
+        default:
+
+    }
+    $.ajax({
+        url: '../../home.json',
+        type: 'GET',
+        dataType: 'json',
+    })
+    .done(function(data) {
+        console.log(data);
+        console.log(data.total[0].content[0].id);
+        console.log("success");
+        var html = new EJS({url: '../views/template/index.ejs'}).render(data);
+        $("#area > div").remove();
+        $("#area").html(html);
+        $('.banner').unslider({
+            speed: 500,               //  The speed to animate each slide (in milliseconds)
+        	delay: 3000,              //  The delay between slide animations (in milliseconds)
+            autoplay: true,
+            arrows: {
+                prev: '<a class="unslider-arrow prev"><</a>',
+                next: '<a class="unslider-arrow next">></a>',
+            }
+        });
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+}
+
 //导航
 Router.route({
     path: ["home/", "anime/", "music/", "game/", "ent/", "tech/", "movies/", "other/"]}, function () {
@@ -84,41 +135,7 @@ Router.route({
         if(location.hash === ''){
             location.hash = "#home/";
         }
-        switch (location.hash.slice(1)) {
-            case "home/":
-                $.ajax({
-                    url: '../../home.json',
-                    type: 'GET',
-                    dataType: 'json',
-                })
-                .done(function(data) {
-                    console.log(data);
-                    console.log(data.total[0].content[0].id);
-                    console.log("success");
-                    var html = new EJS({url: '../views/template/index.ejs'}).render(data);
-                    $("#area > div").remove();
-                    $("#area").html(html);
-                    $('.banner').unslider({
-                        speed: 500,               //  The speed to animate each slide (in milliseconds)
-                    	delay: 3000,              //  The delay between slide animations (in milliseconds)
-                        autoplay: true,
-                        arrows: {
-                            prev: '<a class="unslider-arrow prev"><</a>',
-                            next: '<a class="unslider-arrow next">></a>',
-                        }
-                    });
-                })
-                .fail(function() {
-                    console.log("error");
-                })
-                .always(function() {
-                    console.log("complete");
-                });
-
-                break;
-            default:
-
-        }
+        loadNav(location.hash.slice(1));
 });
 
 //登陆
@@ -154,6 +171,48 @@ Router.route({
                 console.log($el);
                 $el.addClass('active');
             }
+        });
+        if(location.hash.slice(1) == 'personal-center/'){
+                $(".user-nav > a").eq(0).addClass('active');
+        }
+
+        var formData = new FormData();
+
+        $('body').on('change', '.upload input[type="file"]', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            formData.append('v_file', $(this)[0].files[0]);
+            if($(this)[0].files[0].type.indexOf('video') == -1){
+                $(".v-name").text("上传格式不符合视频要求").addClass('error');
+            }else {
+                $(".v-name").text($(this)[0].files[0].name);
+            }
+        });
+
+        $("body").on('click', '.upload-btn .btn', function(event) {
+            event.preventDefault();
+            var v_name = $(".upload-name input").val();
+            formData.append('v_name', v_name);
+            $.ajax({
+                url: 'upload',
+                type: 'post',
+                data: formData,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+            })
+            .done(function(data) {
+                console.log(data);
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
         });
 
         //根据hash加载子界面
@@ -219,7 +278,7 @@ Router.route({
                 src:"../src/level5.mp4",
                 height: "480px", //区域的高度
                 width: "800px" //区域的宽度
-                ,urlToPostDanmu:"../src/stone.php"
+                ,urlToPostDanmu:"../src/stone.php" //发送弹幕请求
             });
 
             //加载弹幕

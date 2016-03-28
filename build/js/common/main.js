@@ -28,10 +28,10 @@ require.config({
             deps: ["jquery"]
         },
         "danmu": {
-            deps: ["jquery"]
+            deps: ["jquery", "jquery.danmu"]
         },
         "router": {
-            deps: ["jquery", "ejs", "jquery.unslider"]
+            deps: ["jquery", "ejs", "jquery.unslider", "jquery.shCircleLoader", "sco.tooltip", "colpick", "jquery.danmu", "danmu"]
         }
 
 
@@ -40,9 +40,16 @@ require.config({
 
 require(["jquery", "ejs", "router"], function($){
     $(function (){
-        var user_status = sessionStorage.getItem('user_status')
-        if(user_status === null || user_status === 'guest') {
-
-        }
+        //判断登陆状态
+        var user_status = sessionStorage.getItem('user_status');
+        var user_name = sessionStorage.getItem('user_name');
+        console.log(user_status);
+        var data = {};
+        data['user_status'] = user_status;
+        data['user_name'] = user_name;
+        console.log(data);
+        var html = new EJS({url: '../views/template/user-status.ejs'}).render(data);
+        $("#login-status > *").remove();
+        $("#login-status").html(html);
     });
 });
