@@ -119,8 +119,6 @@ Router.route({
             default:
 
         }
-        var data = {};
-
 });
 
 //登陆

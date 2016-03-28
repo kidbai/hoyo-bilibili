@@ -38,11 +38,11 @@ require.config({
     }
 });
 
-require(["jquery", "ejs"], function($){
+require(["jquery", "ejs", "router"], function($){
     $(function (){
         var user_status = sessionStorage.getItem('user_status')
         if(user_status === null || user_status === 'guest') {
-            
+
         }
     });
 });
