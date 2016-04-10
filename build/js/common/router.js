@@ -223,7 +223,9 @@ Router.route({
 
         //根据hash加载子界面
         switch (location.hash.slice(1)) {
+            // 每一个case下都需要 ajax获取对应的data
             case "personal-center/":
+                // ajax
                 var data = {};
                 var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
                 $("#user-status > div").remove();

@@ -1,0 +1,11 @@
+{
+    "my-video": [
+        { "src": "asdfasdf", "title": "asdfasdf" },
+        { "src": "asdfasdf", "title": "asdfasdf" },
+        { "src": "asdfasdf", "title": "asdfasdf" },
+        { "src": "asdfasdf", "title": "asdfasdf" }
+    ],
+    "avatar" : "link",
+    "userName": "yyy",
+    "regTime" : "2015-10-10"
+}
