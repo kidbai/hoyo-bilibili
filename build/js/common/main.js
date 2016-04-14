@@ -220,7 +220,7 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                     $("#area").html(html);
                     // 加载视频
                     $("#danmup").DanmuPlayer({
-                        src:"../src/level5.mp4",
+                        src: data.videoSrc,
                         height: "480px", //区域的高度
                         width: "800px" //区域的宽度
                         ,urlToPostDanmu:"../src/stone.php" //发送弹幕请求
