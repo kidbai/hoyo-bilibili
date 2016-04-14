@@ -1,19 +1,19 @@
 <div class="container">
     <div class="v-details">
         <div class="info">
-            <h1 class="v-title">【吐槽】吐槽吐槽吐槽</h1>
+            <h1 class="v-title"><%= title %></h1>
             <div class="v-title-info">
                 <div class="v-title-line">
                     <i class="b-icon-play"></i>
-                    <span>234</span>
+                    <span><%= play %></span>
                 </div>
                 <div class="v-title-line">
                     <i class="b-icon-cm"></i>
-                    <span>234</span>
+                    <span><%= danmu.length %></span>
                 </div>
                 <div class="v-title-line">
                     <i class="b-icon-show"></i>
-                    <span>收藏</span><span>123</span>
+                    <span>收藏</span><span><%= collection %></span>
                 </div>
             </div>
         </div>
@@ -25,12 +25,19 @@
             </div>
             <div class="up-details">
                 <div class="up-name">
-                    youngbye
+                    <%= upName%>
                 </div>
                 <div class="up-follow">
+                    <% if(follow === false) { %>
                     <div class="follow-btn">
                         关注
                     </div>
+                    <% } %>
+                    <% if(follow === true) { %>
+                    <div class="follow-btn cancel">
+                        取消关注
+                    </div>
+                    <% } %>
                 </div>
             </div>
         </div>

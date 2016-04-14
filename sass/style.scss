@@ -235,219 +235,225 @@ a:hover {
     .block {
         position: relative;
         margin-top: 20px;
-        .block-l {
-            float: left;
-            width: 880px;
-            & > ul {
-                position: relative;
-                width: 100%;
-                overflow: hidden;
-                li {
-                    position: relative;
-                    display: block;
-                    float: left;
-                    margin-right: 20px;
-                }
-                li.head {
-                    text-align: center;
-                    line-height: 24px;
-                    font-size: 24px;
-                    font-weight: normal;
-                    color: #fff;
-                    background-color: #f25d8e;
-                    padding: 10px;
-                    @include border-radius(5px);
-                }
-                li.info {
-                    margin-top: 10px;
-                    padding: 10px;
-                    & > a {
-                        color: #00a1d6;
-                        text-decoration: none;
-
-                    }
-                    & > a:hover {
-                        color: #00a1d6;
-                        text-decoration: none;
-                    }
-                }
-                li.more {
-                    margin-top: 20px;
-                    padding: 4px 10px;
-                    float: right;
-                    color: #555;
-                    border: 1px solid #ccd0d7;
-                    @include border-radius(4px);
-                    cursor: pointer;
-                }
-                li.more:hover {
-                    background-color: #ccd0d7;
-                }
-            }
-            .block-body {
-                margin-right: -20px;
-                .v-list {
-                    width: 100%;
-                    height: 360px;
-                    overflow: hidden;
-                    padding-top: 20px;
-                    li {
-                        float: left;
-                        cursor: pointer;
-                        margin: 0 20px 20px 0;
-                        .v {
-                            position: relative;
-                            display: block;
-                            width: 160px;
-                            height: 148px;
-                            font-size: 12px;
-                            overflow: hidden;
-                            @include border-radius(4px);
-                            color: #222;
-                            text-decoration: none;
-                            .v-img {
-                                width: 100%;
-                                height: 100px;
-                                @include border-radius(4px);
-                                overflow: hidden;
-                                img {
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            }
-                            .t {
-                                width: 100%;
-                                height: 48px;
-                                font-size: 13px;
-                                line-height: 20px;
-                                text-align: left;
-                                padding-top: 8px;
-                                margin-bottom: 8px;
-                                word-wrap: break-word;
-                                word-break: break-all;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                            }
-                            & > i {
-                                position: absolute;
-                                display: block;
-                                height: 19px;
-                                background-color: #fff;
-                                width: 100%;
-                                bottom: 0;
-                                margin: 0;
-                                font-size: 12px;
-                                line-height: 12px;
-                                @include transition(.2s all);
-                                span {
-                                    float: left;
-                                    margin: 0;
-                                    padding: 0;
-                                    display: block;
-                                    color: #99a2aa;
-                                    width: 80px;
-                                    white-space: nowrap;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    line-height: 12px;
-                                    height: 14px;
-                                    & > i.play-icon {
-                                        background-position: -282px -90px;
-                                    }
-                                    & > i.cm-icon {
-                                        background-position: -282px -218px;
-                                    }
-                                    & > i {
-                                        display: inline-block;
-                                        margin-right: 5px;
-                                        width: 12px;
-                                        height: 12px;
-                                        background-image: url(../images/icons.png);
-                                        background-repeat: no-repeat;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    li:hover {
-                        .v {
-                            & > i {
-                                bottom: -20px;
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-        .block-r {
-            float: right;
-            width: 280px;
-            & > ul {
-                position: relative;
-                width: 100%;
-                overflow: hidden;
-                li {
-                    position: relative;
-                    float: left;
-                    margin-right: 20px;
-                }
-                li.head {
-                    margin-top: 18px;
-                    margin-left: 20px;
-                    background-color: #00a1d6;
-                    text-align: center;
-                    line-height: 24px;
-                    font-size: 18px;
-                    font-weight: normal;
-                    color: #fff;
-                    padding: 3px;
-                    @include border-radius(5px);
-                }
-            }
-            .b-body {
-                width: 100%;
-                padding-top: 20px;
-                position: relative;
+        .block-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f2f2f2;
+            overflow: hidden;
+            .block-l {
+                float: left;
+                width: 880px;
                 & > ul {
                     position: relative;
-                    padding: 0 20px;
+                    width: 100%;
+                    overflow: hidden;
                     li {
                         position: relative;
-                        width: 100%;
-                        overflow: hidden;
-                        margin-top: 20px;
-                        padding: 2px 0;
-                        i {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            display: block;
-                            background-color: #b8c0cc;
-                            font-size: 12px;
-                            min-width: 12px;
-                            @include border-radius(4px);
-                            padding: 3px 6px;
-                            color: #fff;
-                            font-weight: bolder;
-                        }
+                        display: block;
+                        float: left;
+                        margin-right: 20px;
+                    }
+                    li.head {
+                        text-align: center;
+                        line-height: 24px;
+                        font-size: 24px;
+                        font-weight: normal;
+                        color: #fff;
+                        background-color: #f25d8e;
+                        padding: 10px;
+                        @include border-radius(5px);
+                    }
+                    li.info {
+                        margin-top: 10px;
+                        padding: 10px;
                         & > a {
-                            float: left;
-                            padding-left: 30px;
-                            color: #222;
-                            font-size: 15px;
+                            color: #00a1d6;
                             text-decoration: none;
+
                         }
                         & > a:hover {
                             color: #00a1d6;
+                            text-decoration: none;
                         }
                     }
-                    li:first-child {
-                        margin-top: 0;
+                    li.more {
+                        margin-top: 20px;
+                        padding: 4px 10px;
+                        float: right;
+                        color: #555;
+                        border: 1px solid #ccd0d7;
+                        @include border-radius(4px);
+                        cursor: pointer;
                     }
-                    li:nth-child(1), li:nth-child(2), li:nth-child(3) {
-                        i {
-                            background-color: #f25d8e;
+                    li.more:hover {
+                        background-color: #ccd0d7;
+                    }
+                }
+                .block-body {
+                    margin-right: -20px;
+                    .v-list {
+                        width: 100%;
+                        height: 360px;
+                        overflow: hidden;
+                        padding-top: 20px;
+                        li {
+                            float: left;
+                            cursor: pointer;
+                            margin: 0 20px 20px 0;
+                            .v {
+                                position: relative;
+                                display: block;
+                                width: 160px;
+                                height: 148px;
+                                font-size: 12px;
+                                overflow: hidden;
+                                @include border-radius(4px);
+                                color: #222;
+                                text-decoration: none;
+                                .v-img {
+                                    width: 100%;
+                                    height: 100px;
+                                    @include border-radius(4px);
+                                    overflow: hidden;
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+                                .t {
+                                    width: 100%;
+                                    height: 48px;
+                                    font-size: 13px;
+                                    line-height: 20px;
+                                    text-align: left;
+                                    padding-top: 8px;
+                                    margin-bottom: 8px;
+                                    word-wrap: break-word;
+                                    word-break: break-all;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+                                & > i {
+                                    position: absolute;
+                                    display: block;
+                                    height: 19px;
+                                    background-color: #fff;
+                                    width: 100%;
+                                    bottom: 0;
+                                    margin: 0;
+                                    font-size: 12px;
+                                    line-height: 12px;
+                                    @include transition(.2s all);
+                                    span {
+                                        float: left;
+                                        margin: 0;
+                                        padding: 0;
+                                        display: block;
+                                        color: #99a2aa;
+                                        width: 80px;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        line-height: 12px;
+                                        height: 14px;
+                                        & > i.play-icon {
+                                            background-position: -282px -90px;
+                                        }
+                                        & > i.cm-icon {
+                                            background-position: -282px -218px;
+                                        }
+                                        & > i {
+                                            display: inline-block;
+                                            margin-right: 5px;
+                                            width: 12px;
+                                            height: 12px;
+                                            background-image: url(../images/icons.png);
+                                            background-repeat: no-repeat;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        li:hover {
+                            .v {
+                                & > i {
+                                    bottom: -20px;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+            .block-r {
+                float: right;
+                width: 280px;
+                & > ul {
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+                    li {
+                        position: relative;
+                        float: left;
+                        margin-right: 20px;
+                    }
+                    li.head {
+                        margin-top: 18px;
+                        margin-left: 20px;
+                        background-color: #00a1d6;
+                        text-align: center;
+                        line-height: 24px;
+                        font-size: 18px;
+                        font-weight: normal;
+                        color: #fff;
+                        padding: 3px;
+                        @include border-radius(5px);
+                    }
+                }
+                .b-body {
+                    width: 100%;
+                    padding-top: 20px;
+                    position: relative;
+                    & > ul {
+                        position: relative;
+                        padding: 0 20px;
+                        li {
+                            position: relative;
+                            width: 100%;
+                            overflow: hidden;
+                            margin-top: 20px;
+                            padding: 2px 0;
+                            i {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                display: block;
+                                background-color: #b8c0cc;
+                                font-size: 12px;
+                                min-width: 12px;
+                                @include border-radius(4px);
+                                padding: 3px 6px;
+                                color: #fff;
+                                font-weight: bolder;
+                            }
+                            & > a {
+                                float: left;
+                                padding-left: 30px;
+                                color: #222;
+                                font-size: 15px;
+                                text-decoration: none;
+                            }
+                            & > a:hover {
+                                color: #00a1d6;
+                            }
+                        }
+                        li:first-child {
+                            margin-top: 0;
+                        }
+                        li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+                            i {
+                                background-color: #f25d8e;
+                            }
                         }
                     }
                 }
