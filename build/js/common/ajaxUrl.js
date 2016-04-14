@@ -1,5 +1,5 @@
 define(function (){
-    var baseUrl = 'http://220.167.40.5/hooyoo';
+    var baseUrl = 'http://222.212.252.203/hooyoo';
 　   return {
         registerUrl : baseUrl + '/loginRegister/register.do',
         loginUrl : baseUrl + '/loginRegister/login.do',

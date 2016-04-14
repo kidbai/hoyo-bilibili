@@ -248,6 +248,7 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                 $("body").on('click', '.follow-btn', function(event) {
                     event.preventDefault();
                     /* Act on the event */
+                    var id = $(".up-name").data('id');
                     console.log('click');
                     $.ajax({
                         url: ajaxUrl.follow,
