@@ -20,29 +20,13 @@
 </div>
 <div class="section-v-list">
     <ul class="v-list">
+        <% for(var i = 0; i < my_video.length; i++) { %>
         <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
+            <a href="#video/:<%= my_video[i].id %>">
+                <img src="<%= my_video[i].src %>">
+                <p class="v-title"><%= my_video[i].title %></p>
             </a>
         </li>
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
+        <% } %>
     </ul>
 </div>

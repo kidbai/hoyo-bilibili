@@ -1,28 +1,13 @@
 <div class="section-v-list">
     <ul class="v-list">
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="../images/test.jpg">
-                <p class="v-title">【吐槽】；案例啦啦方式</p>
-            </a>
-        </li>
+        <% for(var i = 0; i < collectionList.length; i++ ) { %>
+            <li>
+                <a href="javascript:void(0)">
+                    <img src="<%= collectionList[i].src %>">
+                    <p class="v-title"><%= collectionList[i].title %></p>
+                </a>
+            </li>
+        <% } %>
+
     </ul>
 </div>

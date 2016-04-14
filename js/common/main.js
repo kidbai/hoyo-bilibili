@@ -419,16 +419,24 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                     formData.append('avatar', $(this)[0].files[0]);
                 });
 
+                var userId = sessionStorage.getItem('user_id');
+
                 //根据hash加载子界面
                 switch (location.hash.slice(1)) {
                     case "personal-center/":
                         $.ajax({
                             url: ajaxUrl.videoList,
-                            type: 'get',
+                            type: 'post',
                             dataType: 'json',
+                            data: {userId: userId}
                         })
                         .done(function(data) {
                             console.log("success");
+                            $("#regTime").text(data.regTime);
+                            $("#avatar-img").attr('src', data.avatar);
+                            var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
+                            $("#user-status > div").remove();
+                            $("#user-status").html(html);
                         })
                         .fail(function() {
                             console.log("error");
@@ -437,34 +445,97 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                             console.log("complete");
                         });
 
-                        var data = {};
-                        var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
-                        $("#user-status > div").remove();
-                        $("#user-status").html(html);
+
                         break;
                     case "personal-center/my-video/":
-                        var data = {};
-                        var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
-                        $("#user-status > div").remove();
-                        $("#user-status").html(html);
+                        $.ajax({
+                            url: ajaxUrl.videoList,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {userId: userId}
+                        })
+                        .done(function(data) {
+                            console.log("success");
+                            $("#regTime").text(data.regTime);
+                            $("#avatar-img").attr('src', data.avatar);
+                            var html = new EJS({url: '../views/template/my-video.ejs'}).render(data);
+                            $("#user-status > div").remove();
+                            $("#user-status").html(html);
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
                         break;
                     case "personal-center/msg/":
-                        var data = {};
-                        var html = new EJS({url: '../views/template/msg.ejs'}).render(data);
-                        $("#user-status > div").remove();
-                        $("#user-status").html(html);
+
+                        $.ajax({
+                            url: ajaxUrl.msgList,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {userId: userId}
+                        })
+                        .done(function(data) {
+                            console.log(data);
+                            console.log("success");
+                            var html = new EJS({url: '../views/template/msg.ejs'}).render(data);
+                            $("#user-status > div").remove();
+                            $("#user-status").html(html);
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
+
+
+
                         break;
                     case "personal-center/follow/":
-                        var data = {};
-                        var html = new EJS({url: '../views/template/follow.ejs'}).render(data);
-                        $("#user-status > div").remove();
-                        $("#user-status").html(html);
+                        $.ajax({
+                            url: ajaxUrl.followList,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {userId: userId}
+                        })
+                        .done(function(data) {
+                            console.log(data);
+                            var html = new EJS({url: '../views/template/follow.ejs'}).render(data);
+                            $("#user-status > div").remove();
+                            $("#user-status").html(html);
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
                         break;
                     case "personal-center/collection/":
-                        var data = {};
-                        var html = new EJS({url: '../views/template/collection.ejs'}).render(data);
-                        $("#user-status > div").remove();
-                        $("#user-status").html(html);
+                        $.ajax({
+                            url: ajaxUrl.collection,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {userId: userId}
+                        })
+                        .done(function(data) {
+                            console.log("success");
+                            $("#regTime").text(data.regTime);
+                            $("#avatar-img").attr('src', data.avatar);
+                            var html = new EJS({url: '../views/template/collection.ejs'}).render(data);
+                            $("#user-status > div").remove();
+                            $("#user-status").html(html);
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
+
                         break;
                     default:
 

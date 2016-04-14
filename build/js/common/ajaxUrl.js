@@ -8,6 +8,9 @@ define(function (){
         upload : baseUrl + '/videoManage/uploadv2.do',
         follow : baseUrl + '/personalCenter/concern.do',
         unfollow : baseUrl + '/personalCenter/noconcern.do',
-        videoList : baseUrl + '/personalCenter/videoList.do'
+        videoList : baseUrl + '/personalCenter/videoList.do',
+        msgList : baseUrl + '/personalCenter/notification.do',
+        collection : baseUrl + '/personalCenter/stars.do',
+        followList : baseUrl + '/personalCenter/followee.do'
     };
 });
