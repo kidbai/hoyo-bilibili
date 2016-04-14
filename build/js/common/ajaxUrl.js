@@ -7,6 +7,7 @@ define(function (){
         videoDetails : baseUrl + '/videoManage/videoInfo.do',
         upload : baseUrl + '/videoManage/uploadv2.do',
         follow : baseUrl + '/personalCenter/concern.do',
+        unfollow : baseUrl + '/personalCenter/noconcern.do',
         videoList : baseUrl + '/personalCenter/videoList.do'
     };
 });

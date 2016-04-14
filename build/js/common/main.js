@@ -89,6 +89,18 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
         });
     }
 
+    function loginOrNot() {
+        if(loginStatus){
+            return false;
+        }else {
+            alert('请登陆');
+            window.location.hash = '#login/';
+            return true;
+        }
+    }
+
+    var loginStatus;
+
     $(function (){
         //判断登陆状态
         var user_status = sessionStorage.getItem('user_status');
@@ -101,8 +113,12 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
         var html = new EJS({url: '../views/template/user-status.ejs'}).render(data);
         $("#login-status > *").remove();
         $("#login-status").html(html);
-
-
+        if(user_status === null){
+            loginStatus = false;
+            window.location.hash = "#home/";
+        }else {
+            loginStatus = true;
+        }
 
         //导航
         Router.route({
@@ -122,7 +138,7 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                 $("#area > div").remove();
                 $("#area").html(html);
 
-                $("body").on('click', "#reg-btn", function(event) {
+                $("#reg-btn").on('click', function(event) {
                     var username = $("#username").val();
                     var nickname = $("#nickname").val();
                     var password = $("#password").val();
@@ -169,7 +185,7 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                 $("#area > div").remove();
                 $("#area").html(html);
 
-                $("body").on('click', '.login-btn ', function(event) {
+                $(".login-btn").on('click', function(event) {
                     event.preventDefault();
                     var username = $("#username").val();
                     var password = $("#password").val();
@@ -206,11 +222,16 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
 
                 var id = location.hash.slice(location.hash.indexOf(":") + 1); //视频id
                 console.log(id);
+                var userId = sessionStorage.getItem('user_id');
+                console.log(userId);
+                if(userId === null){
+                    userId = null;
+                }
                 $.ajax({
                     url: ajaxUrl.videoDetails,
-                    type: 'GET',
+                    type: 'post',
                     dataType: 'json',
-                    data: {videoId: id}
+                    data: {videoId: id, userId: userId}
                 })
                 .done(function(data) {
                     console.log(data);
@@ -218,6 +239,81 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                     var html = new EJS({url: '../views/template/video.ejs'}).render(data);
                     $("#area > div").remove();
                     $("#area").html(html);
+
+                    $('#follow').on('click',function(event) {
+                        event.preventDefault();
+                        /* Act on the event */
+                        if(loginOrNot()){
+                            return false;
+                        }
+                        var id = $(".up-name").data('id');
+                        var userId = sessionStorage.getItem('user_id');
+                        console.log('click');
+                        console.log(id);
+                        $.ajax({
+                            url: ajaxUrl.follow,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {id: id, userId: userId}
+                        })
+                        .done(function(data) {
+                            console.log("success");
+                            if(data.code === "200"){
+                                alert('关注成功');
+                                window.location.reload();
+                            }
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
+
+                    });
+                    $('#unfollow').on('click',function(event) {
+                        event.preventDefault();
+                        /* Act on the event */
+                        var id = $(".up-name").data('id');
+                        var userId = sessionStorage.getItem('user_id');
+                        console.log('click');
+                        console.log(id);
+                        $.ajax({
+                            url: ajaxUrl.unfollow,
+                            type: 'post',
+                            dataType: 'json',
+                            data: {id: id, userId: userId}
+                        })
+                        .done(function(data) {
+                            console.log("success");
+                            if(data.code === "200"){
+                                alert('取消成功');
+                                window.location.reload();
+                            }
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
+
+                    });
+
+
+                    // 收藏功能
+                    $(".b-icon-show").on('click', function(event) {
+                        event.preventDefault();
+                        /* Act on the event */
+                        loginOrNot();
+                        if($(this).hasClass('active')){
+                            // 取消收藏
+                            $(this).removeClass('active');
+                        }else {
+                            // 收藏
+                            $(this).addClass('active');
+                        }
+                    });
                     // 加载视频
                     $("#danmup").DanmuPlayer({
                         src: data.videoSrc,
@@ -245,42 +341,7 @@ require(["jquery", "ajaxUrl", "ejs", "router"], function($, ajaxUrl){
                     console.log("complete");
                 });
 
-                $("body").on('click', '.follow-btn', function(event) {
-                    event.preventDefault();
-                    /* Act on the event */
-                    var id = $(".up-name").data('id');
-                    console.log('click');
-                    $.ajax({
-                        url: ajaxUrl.follow,
-                        type: 'get',
-                        dataType: 'json',
-                        data: {id: id}
-                    })
-                    .done(function() {
-                        console.log("success");
-                    })
-                    .fail(function() {
-                        console.log("error");
-                    })
-                    .always(function() {
-                        console.log("complete");
-                    });
 
-                });
-
-
-                // 收藏功能
-                $("body").on('click', ".b-icon-show", function(event) {
-                    event.preventDefault();
-                    /* Act on the event */
-                    if($(this).hasClass('active')){
-                        // 取消收藏
-                        $(this).removeClass('active');
-                    }else {
-                        // 收藏
-                        $(this).addClass('active');
-                    }
-                });
         });
 
         //个人中心

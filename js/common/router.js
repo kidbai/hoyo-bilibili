@@ -51,9 +51,6 @@
         // hash变化时的处理
         window.addEventListener('hashchange', function () {
             console.log(location.hash);
-
-            $("body").unbind("click");
-            $("body").unbind("change");
             //过滤掉:id
             var pos = location.hash.indexOf(":");
             if(pos != -1) {
